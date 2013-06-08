@@ -1,0 +1,19 @@
+
+<form method="post" action="">
+            <input type="hidden" name="next" value="{{ next }}" />
+            <table>
+            {% csrf_token %}
+            {% if errors %}<tr><td colspan="3"><p class="error">Логин и/или пароль введены неверно.</p></td></tr>{% endif %}
+            <tr>
+                <td>Логин</td>
+                <td>Пароль</td>
+            </tr>
+            <tr>
+                <td><input type="text" maxlength="30" value="" name="username" id="id_username"></td>
+                <td><input type="password" id="id_password" value="" name="password"> <input type="submit"></td>
+
+            </tr>
+
+
+            </table>
+            </form>

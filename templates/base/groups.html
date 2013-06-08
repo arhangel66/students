@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+Список групп
+{% endblock%}
+{% block content %}
+    {% load base_extras %}
+    <h1>Список групп</h1>
+
+        <table class="tablesorter">
+    <thead>
+        <th>id группы</th>
+        <th>Название группы</th>
+        <th>Староста</th>
+        <th>Управление</th>
+    </thead>
+    <tbody>
+        {% for group in groups %}
+        <tr>
+            <td><a href="{% url 'group_info' group.id %}">{{ group.id }}</a></td>
+            <td><a href="{% url 'group_info' group.id %}">{{ group.name }}</a></td>
+            <td>{{ group.elder }}</td>
+            <td><a href="{%  url 'group_edit' group.id %}">Ред</a> <a href="{% url 'group_del' group.id %}">Уд</a> {% edit_list group %}</td>
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock %}

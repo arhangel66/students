@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+Группа {{ group }}
+{% endblock%}
+{% load base_extras %}
+{% block content %}
+    <h1>Группа {{ group }}</h1>
+
+        <table class="tablesorter">
+    <thead>
+        <th>id студента</th>
+        <th>ФИО</th>
+        <th>День рождения</th>
+        <th>Управление</th>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.fio }}</td>
+            <td>{{ student.bidthday }}</td>
+            <td><a href="{%  url 'student_edit' student.id %}">Ред</a> <a href="{% url 'student_del' student.id %}">Уд</a> {% edit_list student %}</td>
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock %}
